@@ -87,8 +87,8 @@ object AppConfig {
     const val TAG_FRAGMENT = "fragment"
 
     /** Network-related constants. */
-    const val UPLINK = "upload"
-    const val DOWNLINK = "download"
+    const val UPLINK = "uplink"
+    const val DOWNLINK = "downlink"
 
     /** URLs for various resources. */
     const val androidpackagenamelistUrl =
