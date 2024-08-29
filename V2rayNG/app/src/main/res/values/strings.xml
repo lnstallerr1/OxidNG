@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">NikaNG</string>
+    <string name="app_name" translatable="false">OxidNG</string>
     <string name="app_widget_name">Switch</string>
     <string name="app_tile_name">Switch</string>
     <string name="app_tile_first_use">First use of this feature, please use the app to add server</string>
@@ -173,7 +173,7 @@
 
     <string name="title_pref_vpn_dns">VPN DNS (only IPv4/v6)</string>
 
-    <string name="title_pref_domestic_dns">Domestic DNS (Optional)</string>
+    <string name="title_pref_domestic_dns">Direct DNS (Optional)</string>
     <string name="summary_pref_domestic_dns">DNS</string>
 
     <string name="title_pref_delay_test_url">True delay test url (http/https)</string>
