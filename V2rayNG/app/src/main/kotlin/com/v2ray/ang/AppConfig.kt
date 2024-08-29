@@ -87,8 +87,8 @@ object AppConfig {
     const val TAG_FRAGMENT = "fragment"
 
     /** Network-related constants. */
-    const val UPLINK = "uplink"
-    const val DOWNLINK = "downlink"
+    const val UPLINK = "upload"
+    const val DOWNLINK = "download"
 
     /** URLs for various resources. */
     const val androidpackagenamelistUrl =
@@ -97,7 +97,8 @@ object AppConfig {
         "https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/"
     const val v2rayNGUrl = "https://github.com/oxidvip/NikaNG/"
     const val v2rayNGIssues = "https://github.com/oxidvip/NikaNG/issues"
-    const val v2rayNGPrivacyPolicy = "https://raw.githubusercontent.com/2dust/v2rayNG/master/CR.md"
+    const val v2rayNGWikiMode = "https://github.com/oxidvip/NikaNG/wiki"
+    const val v2rayNGPrivacyPolicy = "https://github.com/oxidvip/NikaNG/blob/master/CR.md"
     const val PromotionUrl = "https://mahsaserver.com"
     const val GeoUrl = "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/"
     const val TgChannelUrl = "https://t.me/oxidvip"
