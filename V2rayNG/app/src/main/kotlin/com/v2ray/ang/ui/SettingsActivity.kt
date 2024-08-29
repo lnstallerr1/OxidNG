@@ -189,13 +189,13 @@ class SettingsActivity : BaseActivity() {
             updateMux(settingsStorage.getBoolean(AppConfig.PREF_MUX_ENABLED, false))
             mux?.isChecked = settingsStorage.getBoolean(AppConfig.PREF_MUX_ENABLED, false)
             muxConcurrency?.summary = settingsStorage.decodeString(AppConfig.PREF_MUX_CONCURRENCY, "8")
-            muxXudpConcurrency?.summary = settingsStorage.decodeString(AppConfig.PREF_MUX_XUDP_CONCURRENCY, "8")
+            muxXudpConcurrency?.summary = settingsStorage.decodeString(AppConfig.PREF_MUX_XUDP_CONCURRENCY, "16")
 
             updateFragment(settingsStorage.getBoolean(AppConfig.PREF_FRAGMENT_ENABLED, false))
             fragment?.isChecked = settingsStorage.getBoolean(AppConfig.PREF_FRAGMENT_ENABLED, false)
             fragmentPackets?.summary = settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_PACKETS, "tlshello")
             fragmentLength?.summary = settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_LENGTH, "10-20")
-            fragmentInterval?.summary = settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_INTERVAL, "10-20")
+            fragmentInterval?.summary = settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_INTERVAL, "1-2")
 
             autoUpdateCheck?.isChecked = settingsStorage.getBoolean(AppConfig.SUBSCRIPTION_AUTO_UPDATE, false)
             autoUpdateInterval?.summary =
@@ -278,7 +278,7 @@ class SettingsActivity : BaseActivity() {
                 updateLocalDns(
                     settingsStorage.getBoolean(
                         AppConfig.PREF_LOCAL_DNS_ENABLED,
-                        false
+                        true
                     )
                 )
             }
@@ -319,7 +319,7 @@ class SettingsActivity : BaseActivity() {
             muxXudpQuic?.isEnabled = enabled
             if (enabled) {
                 updateMuxConcurrency(settingsStorage.decodeString(AppConfig.PREF_MUX_CONCURRENCY, "8"))
-                updateMuxXudpConcurrency(settingsStorage.decodeString(AppConfig.PREF_MUX_XUDP_CONCURRENCY, "8"))
+                updateMuxXudpConcurrency(settingsStorage.decodeString(AppConfig.PREF_MUX_XUDP_CONCURRENCY, "16"))
             }
         }
 
@@ -335,7 +335,7 @@ class SettingsActivity : BaseActivity() {
             if (value == null) {
                 muxXudpQuic?.isEnabled = true
             } else {
-                val concurrency = value.toIntOrNull() ?: 8
+                val concurrency = value.toIntOrNull() ?: 16
                 muxXudpConcurrency?.summary = concurrency.toString()
                 muxXudpQuic?.isEnabled = concurrency >= 0
             }
@@ -348,7 +348,7 @@ class SettingsActivity : BaseActivity() {
             if (enabled) {
                 updateFragmentPackets(settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_PACKETS, "tlshello"))
                 updateFragmentLength(settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_LENGTH, "10-20"))
-                updateFragmentInterval(settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_INTERVAL, "10-20"))
+                updateFragmentInterval(settingsStorage.decodeString(AppConfig.PREF_FRAGMENT_INTERVAL, "1-2"))
             }
         }
 
