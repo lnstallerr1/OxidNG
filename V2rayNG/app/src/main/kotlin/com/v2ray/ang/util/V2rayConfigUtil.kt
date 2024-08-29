@@ -147,7 +147,7 @@ object V2rayConfigUtil {
                     ?: true
             v2rayConfig.inbounds[0].sniffing?.enabled = fakedns || sniffAllTlsAndHttp
             v2rayConfig.inbounds[0].sniffing?.routeOnly =
-                settingsStorage?.decodeBool(AppConfig.PREF_ROUTE_ONLY_ENABLED, false)
+                settingsStorage?.decodeBool(AppConfig.PREF_ROUTE_ONLY_ENABLED, true)
             if (!sniffAllTlsAndHttp) {
                 v2rayConfig.inbounds[0].sniffing?.destOverride?.clear()
             }
@@ -172,7 +172,7 @@ object V2rayConfigUtil {
 
     private fun fakedns(v2rayConfig: V2rayConfig) {
         if (settingsStorage?.decodeBool(AppConfig.PREF_LOCAL_DNS_ENABLED) == true
-            && settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == true
+            && settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == false
         ) {
             v2rayConfig.fakedns = listOf(V2rayConfig.FakednsBean())
         }
@@ -217,7 +217,7 @@ object V2rayConfigUtil {
             // Hardcode googleapis.cn gstatic.com
             val googleapisRoute = V2rayConfig.RoutingBean.RulesBean(
                 outboundTag = TAG_PROXY,
-                domain = arrayListOf("domain:googleapis.cn", "domain:gstatic.com")
+                domain = arrayListOf("domain:googleapis.ir", "domain:gstatic.com")
             )
 
             when (routingMode) {
@@ -226,13 +226,13 @@ object V2rayConfigUtil {
                 }
 
                 ERoutingMode.BYPASS_MAINLAND.value -> {
-                    routingGeo("", "cn", TAG_DIRECT, v2rayConfig)
+                    routingGeo("", "ir", TAG_DIRECT, v2rayConfig)
                     v2rayConfig.routing.rules.add(0, googleapisRoute)
                 }
 
                 ERoutingMode.BYPASS_LAN_MAINLAND.value -> {
                     routingGeo("", "private", TAG_DIRECT, v2rayConfig)
-                    routingGeo("", "cn", TAG_DIRECT, v2rayConfig)
+                    routingGeo("", "ir", TAG_DIRECT, v2rayConfig)
                     v2rayConfig.routing.rules.add(0, googleapisRoute)
                 }
 
@@ -348,8 +348,8 @@ object V2rayConfigUtil {
      */
     private fun customLocalDns(v2rayConfig: V2rayConfig): Boolean {
         try {
-            if (settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == true) {
-                val geositeCn = arrayListOf("geosite:cn")
+            if (settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == false) {
+                val geositeIr = arrayListOf("geosite:ir")
                 val proxyDomain = userRule2Domain(
                     settingsStorage?.decodeString(AppConfig.PREF_V2RAY_ROUTING_AGENT)
                         .orEmpty()
@@ -363,7 +363,7 @@ object V2rayConfigUtil {
                     0,
                     V2rayConfig.DnsBean.ServersBean(
                         address = "fakedns",
-                        domains = geositeCn.plus(proxyDomain).plus(directDomain)
+                        domains = geositeIr.plus(proxyDomain).plus(directDomain)
                     )
                 )
             }
@@ -456,7 +456,7 @@ object V2rayConfigUtil {
                 ?: ERoutingMode.BYPASS_LAN_MAINLAND.value
             val isCnRoutingMode =
                 (routingMode == ERoutingMode.BYPASS_MAINLAND.value || routingMode == ERoutingMode.BYPASS_LAN_MAINLAND.value)
-            val geoipCn = arrayListOf("geoip:cn")
+            val geoipIr = arrayListOf("geoip:ir")
 
             if (directDomain.size > 0) {
                 servers.add(
@@ -464,18 +464,18 @@ object V2rayConfigUtil {
                         domesticDns.first(),
                         53,
                         directDomain,
-                        if (isCnRoutingMode) geoipCn else null
+                        if (isCnRoutingMode) geoipIr else null
                     )
                 )
             }
             if (isCnRoutingMode) {
-                val geositeCn = arrayListOf("geosite:cn")
+                val geositeIr = arrayListOf("geosite:ir")
                 servers.add(
                     V2rayConfig.DnsBean.ServersBean(
                         domesticDns.first(),
                         53,
-                        geositeCn,
-                        geoipCn
+                        geositeIr,
+                        geoipIr
                     )
                 )
             }
@@ -501,11 +501,9 @@ object V2rayConfigUtil {
             }
 
             // hardcode googleapi rule to fix play store problems
-            hosts["domain:googleapis.cn"] = "googleapis.com"
+            hosts["domain:googleapis.ir"] = "googleapis.com"
 
             // hardcode popular Android Private DNS rule to fix localhost DNS problem
-            hosts["dns.pub"] = arrayListOf("1.12.12.12", "120.53.53.53")
-            hosts["dns.alidns.com"] = arrayListOf("223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1")
             hosts["one.one.one.one"] = arrayListOf("1.1.1.1", "1.0.0.1", "2606:4700:4700::1111", "2606:4700:4700::1001")
             hosts["dns.google"] = arrayListOf("8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844")
 
@@ -553,7 +551,7 @@ object V2rayConfigUtil {
                 outbound.mux?.concurrency =
                     settingsStorage?.decodeInt(AppConfig.PREF_MUX_CONCURRENCY) ?: 8
                 outbound.mux?.xudpConcurrency =
-                    settingsStorage?.decodeInt(AppConfig.PREF_MUX_XUDP_CONCURRENCY) ?: 8
+                    settingsStorage?.decodeInt(AppConfig.PREF_MUX_XUDP_CONCURRENCY) ?: 16
                 outbound.mux?.xudpProxyUDP443 =
                     settingsStorage?.decodeString(AppConfig.PREF_MUX_XUDP_QUIC) ?: "reject"
             } else {
@@ -635,12 +633,13 @@ object V2rayConfigUtil {
                     length = settingsStorage?.decodeString(AppConfig.PREF_FRAGMENT_LENGTH)
                         ?: "10-20",
                     interval = settingsStorage?.decodeString(AppConfig.PREF_FRAGMENT_INTERVAL)
-                        ?: "10-20"
+                        ?: "1-2"
                 )
             )
             fragmentOutbound.streamSettings = V2rayConfig.OutboundBean.StreamSettingsBean(
                 sockopt = V2rayConfig.OutboundBean.StreamSettingsBean.SockoptBean(
-                    TcpNoDelay = true,
+                    tcpNoDelay = true,
+                    tcpFastOpen = true,
                     mark = 255
                 )
             )
