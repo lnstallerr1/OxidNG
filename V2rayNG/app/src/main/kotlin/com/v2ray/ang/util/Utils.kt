@@ -411,12 +411,7 @@ object Utils {
         return when (lang) {
             "auto" -> getSysLocale()
             "en" -> Locale.ENGLISH
-            "zh-rCN" -> Locale.CHINA
-            "zh-rTW" -> Locale.TRADITIONAL_CHINESE
-            "vi" -> Locale("vi")
-            "ru" -> Locale("ru")
             "fa" -> Locale("fa")
-            "bn" -> Locale("bn")
             else -> getSysLocale()
         }
     }
