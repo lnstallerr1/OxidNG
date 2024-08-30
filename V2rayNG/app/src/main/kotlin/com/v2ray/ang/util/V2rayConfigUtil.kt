@@ -212,7 +212,7 @@ object V2rayConfigUtil {
 
             v2rayConfig.routing.domainStrategy =
                 settingsStorage?.decodeString(AppConfig.PREF_ROUTING_DOMAIN_STRATEGY)
-                    ?: "IPIfNonMatch"
+                    ?: "AsIs"
 
 
             when (routingMode) {
@@ -233,7 +233,7 @@ object V2rayConfigUtil {
                     val globalDirect = V2rayConfig.RoutingBean.RulesBean(
                         outboundTag = TAG_DIRECT,
                     )
-                    if (v2rayConfig.routing.domainStrategy != "IPIfNonMatch") {
+                    if (v2rayConfig.routing.domainStrategy != "AsIs") {
                         globalDirect.port = "0-65535"
                     } else {
                         globalDirect.ip = arrayListOf("0.0.0.0/0", "::/0")
@@ -246,7 +246,7 @@ object V2rayConfigUtil {
                 val globalProxy = V2rayConfig.RoutingBean.RulesBean(
                     outboundTag = TAG_PROXY,
                 )
-                if (v2rayConfig.routing.domainStrategy != "IPIfNonMatch") {
+                if (v2rayConfig.routing.domainStrategy != "AsIs") {
                     globalProxy.port = "0-65535"
                 } else {
                     globalProxy.ip = arrayListOf("0.0.0.0/0", "::/0")
@@ -276,15 +276,6 @@ object V2rayConfigUtil {
                     rulesIP.ip = ArrayList()
                     rulesIP.ip?.add("geoip:$code")
                     v2rayConfig.routing.rules.add(rulesIP)
-                }
-
-                if (ipOrDomain == "domain" || ipOrDomain == "") {
-                    //Domain
-                    val rulesDomain = V2rayConfig.RoutingBean.RulesBean()
-                    rulesDomain.outboundTag = tag
-                    rulesDomain.domain = ArrayList()
-                    rulesDomain.domain?.add("geosite:$code")
-                    v2rayConfig.routing.rules.add(rulesDomain)
                 }
             }
         } catch (e: Exception) {
@@ -341,7 +332,7 @@ object V2rayConfigUtil {
      */
     private fun customLocalDns(v2rayConfig: V2rayConfig): Boolean {
         try {
-            if (settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == false) {
+            if (settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == true) {
                 val geositeIr = arrayListOf("geosite:ir")
                 val proxyDomain = userRule2Domain(
                     settingsStorage?.decodeString(AppConfig.PREF_V2RAY_ROUTING_AGENT)
@@ -461,13 +452,9 @@ object V2rayConfigUtil {
                     )
                 )
             }
-            if (isCnRoutingMode) {
+            if (isIrRoutingMode) {
                 val geositeIr = arrayListOf("geosite:ir")
                 servers.add(
-                    V2rayConfig.DnsBean.ServersBean(
-                        domesticDns.first(),
-                        53,
-                        geositeIr,
                         geoipIr
                     )
                 )
