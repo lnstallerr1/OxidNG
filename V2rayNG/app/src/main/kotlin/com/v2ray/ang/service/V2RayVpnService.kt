@@ -118,7 +118,7 @@ class V2RayVpnService : VpnService(), ServiceControl {
         //val enableLocalDns = defaultDPreference.getPrefBoolean(AppConfig.PREF_LOCAL_DNS_ENABLED, false)
 
         val routingMode = settingsStorage?.decodeString(AppConfig.PREF_ROUTING_MODE)
-            ?: ERoutingMode.BYPASS_LAN_MAINLAND.value
+            ?: ERoutingMode.BYPASS_LAN.value
 
         builder.setMtu(VPN_MTU)
         builder.addAddress(PRIVATE_VLAN4_CLIENT, 30)
@@ -156,7 +156,7 @@ class V2RayVpnService : VpnService(), ServiceControl {
 
         if (settingsStorage?.decodeBool(AppConfig.PREF_PER_APP_PROXY) == true) {
             val apps = settingsStorage?.decodeStringSet(AppConfig.PREF_PER_APP_PROXY_SET)
-            val bypassApps = settingsStorage?.decodeBool(AppConfig.PREF_BYPASS_APPS) ?: false
+            val bypassApps = settingsStorage?.decodeBool(AppConfig.PREF_BYPASS_APPS) ?: true
             apps?.forEach {
                 try {
                     if (bypassApps)
