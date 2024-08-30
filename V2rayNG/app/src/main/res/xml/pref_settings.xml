@@ -38,7 +38,6 @@
             android:title="@string/title_pref_local_dns_port" />
 
         <EditTextPreference
-            android:defaultValue="false"
             android:key="pref_vpn_dns"
             android:summary="@string/summary_pref_remote_dns"
             android:title="@string/title_pref_vpn_dns" />
@@ -46,7 +45,7 @@
 
     <PreferenceCategory android:title="@string/title_pref_routing">
         <ListPreference
-            android:defaultValue="AsIs"
+            android:defaultValue="IPIfNonMatch"
             android:entries="@array/routing_domain_strategy"
             android:entryValues="@array/routing_domain_strategy"
             android:key="pref_routing_domain_strategy"
@@ -192,7 +191,7 @@
 
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="pref_disable_allow_insecure"
+            android:key="pref_allow_insecure"
             android:summary="@string/summary_pref_allow_insecure"
             android:title="@string/title_pref_allow_insecure" />
 
