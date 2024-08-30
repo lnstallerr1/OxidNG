@@ -173,7 +173,7 @@
 
     <string name="title_pref_vpn_dns">VPN DNS (only IPv4/v6)</string>
 
-    <string name="title_pref_domestic_dns">Direct DNS (Optional)</string>
+    <string name="title_pref_domestic_dns">Domestic DNS (Optional)</string>
     <string name="summary_pref_domestic_dns">DNS</string>
 
     <string name="title_pref_delay_test_url">True delay test url (http/https)</string>
