@@ -84,6 +84,7 @@
       "rules": []
   },
   "dns": {
+      "hosts": {},
       "servers": []
   }
 }
