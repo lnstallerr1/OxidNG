@@ -8,11 +8,11 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.MahsaNet.NikaNG"
+        applicationId = "com.MahsaNet.OxidNG"
         minSdk = 21
         targetSdk = 34
         versionCode = 583
-        versionName = "1.8.38"
+        versionName = "1.9.0"
         multiDexEnabled = true
         splits {
             abi {
