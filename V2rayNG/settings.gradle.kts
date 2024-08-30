@@ -14,5 +14,5 @@ dependencyResolutionManagement {
         maven { url = uri("https://jitpack.io") }
     }
 }
-rootProject.name = "V2rayNG"
+rootProject.name = "OxidNG"
 include(":app")
