@@ -103,6 +103,7 @@ object AppConfig {
     const val GeoUrl = "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/"
     const val TgChannelUrl = "https://t.me/oxidvip"
     const val DelayTestUrl = "https://api.telegram.org/robots.txt"
+    const val DelayTestUrl2 = "https://api.telegram.org/robots.txt"
 
     /** DNS server addresses. */
     const val DNS_PROXY = "1.1.1.1"
