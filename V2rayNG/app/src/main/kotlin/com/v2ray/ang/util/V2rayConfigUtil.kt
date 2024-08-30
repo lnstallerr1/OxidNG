@@ -638,8 +638,7 @@ object V2rayConfigUtil {
             )
             fragmentOutbound.streamSettings = V2rayConfig.OutboundBean.StreamSettingsBean(
                 sockopt = V2rayConfig.OutboundBean.StreamSettingsBean.SockoptBean(
-                    tcpNoDelay = true,
-                    tcpFastOpen = true,
+                    TcpNoDelay = true,
                     mark = 255
                 )
             )
