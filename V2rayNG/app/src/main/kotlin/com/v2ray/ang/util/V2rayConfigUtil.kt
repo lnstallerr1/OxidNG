@@ -452,7 +452,7 @@ object V2rayConfigUtil {
                     )
                 )
             }
-            if (isChRoutingMode) {
+            if (isCnRoutingMode) {
                 val geositeIr = arrayListOf("geosite:ir")
                 servers.add(
                         geoipIr
