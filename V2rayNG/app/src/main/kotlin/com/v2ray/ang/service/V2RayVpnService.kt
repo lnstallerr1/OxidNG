@@ -32,10 +32,10 @@ import java.lang.ref.SoftReference
 class V2RayVpnService : VpnService(), ServiceControl {
     companion object {
         private const val VPN_MTU = 9000
-        private const val PRIVATE_VLAN4_CLIENT = "10.1.1.1"
-        private const val PRIVATE_VLAN4_ROUTER = "10.1.1.2"
-        private const val PRIVATE_VLAN6_CLIENT = "::ffff:a01:101"
-        private const val PRIVATE_VLAN6_ROUTER = "::ffff:a01:102"
+        private const val PRIVATE_VLAN4_CLIENT = "10.0.0.1"
+        private const val PRIVATE_VLAN4_ROUTER = "10.0.0.2"
+        private const val PRIVATE_VLAN6_CLIENT = "fd00::1"
+        private const val PRIVATE_VLAN6_ROUTER = "fd00::2"
         private const val TUN2SOCKS = "libtun2socks.so"
     }
 
