@@ -52,7 +52,7 @@
             android:title="@string/title_pref_routing_domain_strategy" />
 
         <ListPreference
-            android:defaultValue="3"
+            android:defaultValue="1"
             android:entries="@array/routing_mode"
             android:entryValues="@array/routing_mode_value"
             android:key="pref_routing_mode"
@@ -186,7 +186,7 @@
             android:title="@string/title_pref_proxy_sharing_enabled" />
 
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="pref_allow_insecure"
             android:summary="@string/summary_pref_allow_insecure"
             android:title="@string/title_pref_allow_insecure" />
