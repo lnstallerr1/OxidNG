@@ -11,7 +11,7 @@ android {
         applicationId = "com.MahsaNet.OxidNG"
         minSdk = 21
         targetSdk = 34
-        versionCode = 583
+        versionCode = 585
         versionName = "1.9.0"
         multiDexEnabled = true
         splits {
