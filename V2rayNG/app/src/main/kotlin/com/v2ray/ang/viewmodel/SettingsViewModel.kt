@@ -60,16 +60,11 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 settingsStorage?.encode(key, sharedPreferences.getString(key, ""))
             }
 
-            AppConfig.PREF_ROUTE_ONLY_ENABLED,
-            AppConfig.PREF_SPEED_ENABLED,
             AppConfig.PREF_PROXY_SHARING,
-            AppConfig.PREF_LOCAL_DNS_ENABLED,
             AppConfig.PREF_FAKE_DNS_ENABLED,
-            AppConfig.PREF_ALLOW_INSECURE,
             AppConfig.PREF_PREFER_IPV6,
             AppConfig.PREF_PER_APP_PROXY,
             AppConfig.PREF_BYPASS_APPS,
-            AppConfig.PREF_CONFIRM_REMOVE,
             AppConfig.PREF_START_SCAN_IMMEDIATE,
             AppConfig.SUBSCRIPTION_AUTO_UPDATE,
             AppConfig.PREF_FRAGMENT_ENABLED,
@@ -78,7 +73,13 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 settingsStorage?.encode(key, sharedPreferences.getBoolean(key, false))
             }
 
-            AppConfig.PREF_SNIFFING_ENABLED -> {
+            AppConfig.PREF_SNIFFING_ENABLED,
+            AppConfig.PREF_CONFIRM_REMOVE,
+            AppConfig.PREF_DISABLE_ALLOW_INSECURE,
+            AppConfig.PREF_LOCAL_DNS_ENABLED,
+            AppConfig.PREF_ROUTE_ONLY_ENABLED,
+            AppConfig.PREF_SPEED_ENABLED,
+            -> {
                 settingsStorage?.encode(key, sharedPreferences.getBoolean(key, true))
             }
 
