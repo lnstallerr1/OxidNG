@@ -222,13 +222,11 @@ object V2rayConfigUtil {
 
                 ERoutingMode.BYPASS_MAINLAND.value -> {
                     routingGeo("", "ir", TAG_DIRECT, v2rayConfig)
-                    v2rayConfig.routing.rules.add(0, googleapisRoute)
                 }
 
                 ERoutingMode.BYPASS_LAN_MAINLAND.value -> {
                     routingGeo("", "private", TAG_DIRECT, v2rayConfig)
                     routingGeo("", "ir", TAG_DIRECT, v2rayConfig)
-                    v2rayConfig.routing.rules.add(0, googleapisRoute)
                 }
 
                 ERoutingMode.GLOBAL_DIRECT.value -> {
