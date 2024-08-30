@@ -75,7 +75,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
             AppConfig.PREF_SNIFFING_ENABLED,
             AppConfig.PREF_CONFIRM_REMOVE,
-            AppConfig.PREF_DISABLE_ALLOW_INSECURE,
+            AppConfig.PREF_ALLOW_INSECURE,
             AppConfig.PREF_LOCAL_DNS_ENABLED,
             AppConfig.PREF_ROUTE_ONLY_ENABLED,
             AppConfig.PREF_SPEED_ENABLED,
