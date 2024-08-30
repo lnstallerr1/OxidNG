@@ -181,7 +181,7 @@ class SettingsActivity : BaseActivity() {
         override fun onStart() {
             super.onStart()
             updateMode(settingsStorage.decodeString(AppConfig.PREF_MODE, "VPN"))
-            localDns?.isChecked = settingsStorage.getBoolean(AppConfig.PREF_LOCAL_DNS_ENABLED, true)
+            localDns?.isChecked = settingsStorage.getBoolean(AppConfig.PREF_LOCAL_DNS_ENABLED, false)
             fakeDns?.isChecked = settingsStorage.getBoolean(AppConfig.PREF_FAKE_DNS_ENABLED, false)
             localDnsPort?.summary = settingsStorage.decodeString(AppConfig.PREF_LOCAL_DNS_PORT, AppConfig.PORT_LOCAL_DNS)
             vpnDns?.summary = settingsStorage.decodeString(AppConfig.PREF_VPN_DNS, AppConfig.DNS_VPN)
@@ -234,7 +234,6 @@ class SettingsActivity : BaseActivity() {
                 AppConfig.PREF_ROUTE_ONLY_ENABLED,
                 AppConfig.PREF_SPEED_ENABLED,
                 AppConfig.PREF_CONFIRM_REMOVE,
-                AppConfig.PREF_PREFER_IPV6,
                 AppConfig.PREF_ALLOW_INSECURE,
             ).forEach { key ->
                 findPreference<CheckBoxPreference>(key)?.isChecked =
@@ -244,6 +243,7 @@ class SettingsActivity : BaseActivity() {
             listOf(
                 AppConfig.PREF_BYPASS_APPS,
                 AppConfig.PREF_START_SCAN_IMMEDIATE,
+                AppConfig.PREF_PREFER_IPV6,
                 AppConfig.PREF_PROXY_SHARING
             ).forEach { key ->
                 findPreference<CheckBoxPreference>(key)?.isChecked =
