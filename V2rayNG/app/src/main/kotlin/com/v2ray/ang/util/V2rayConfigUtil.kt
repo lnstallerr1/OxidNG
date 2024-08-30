@@ -452,12 +452,11 @@ object V2rayConfigUtil {
                     )
                 )
             }
-            if (isIrRoutingMode) {
+            if (isChRoutingMode) {
                 val geositeIr = arrayListOf("geosite:ir")
                 servers.add(
                         geoipIr
                     )
-                )
             }
 
             if (Utils.isPureIpAddress(domesticDns.first())) {
