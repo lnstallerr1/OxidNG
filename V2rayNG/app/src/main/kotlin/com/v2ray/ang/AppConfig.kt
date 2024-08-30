@@ -99,7 +99,7 @@ object AppConfig {
     const val v2rayNGIssues = "https://github.com/oxidvip/NikaNG/issues"
     const val v2rayNGWikiMode = "https://github.com/oxidvip/NikaNG/wiki"
     const val v2rayNGPrivacyPolicy = "https://github.com/oxidvip/NikaNG/blob/master/CR.md"
-    const val PromotionUrl = "https://mahsaserver.com"
+    const val PromotionUrl = "aHR0cHM6Ly93d3cubWFoc2FzZXJ2ZXIuY29t"
     const val GeoUrl = "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/"
     const val TgChannelUrl = "https://t.me/oxidvip"
     const val DelayTestUrl = "https://api.telegram.org/robots.txt"
