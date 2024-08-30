@@ -172,7 +172,7 @@ object V2rayConfigUtil {
 
     private fun fakedns(v2rayConfig: V2rayConfig) {
         if (settingsStorage?.decodeBool(AppConfig.PREF_LOCAL_DNS_ENABLED) == true
-            && settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == false
+            && settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == true
         ) {
             v2rayConfig.fakedns = listOf(V2rayConfig.FakednsBean())
         }
@@ -214,11 +214,6 @@ object V2rayConfigUtil {
                 settingsStorage?.decodeString(AppConfig.PREF_ROUTING_DOMAIN_STRATEGY)
                     ?: "IPIfNonMatch"
 
-            // Hardcode googleapis.cn gstatic.com
-            val googleapisRoute = V2rayConfig.RoutingBean.RulesBean(
-                outboundTag = TAG_PROXY,
-                domain = arrayListOf("domain:googleapis.ir", "domain:gstatic.com")
-            )
 
             when (routingMode) {
                 ERoutingMode.BYPASS_LAN.value -> {
@@ -499,9 +494,6 @@ object V2rayConfigUtil {
             if (blkDomain.size > 0) {
                 hosts.putAll(blkDomain.map { it to "127.0.0.1" })
             }
-
-            // hardcode googleapi rule to fix play store problems
-            hosts["domain:googleapis.ir"] = "googleapis.com"
 
             // hardcode popular Android Private DNS rule to fix localhost DNS problem
             hosts["one.one.one.one"] = arrayListOf("1.1.1.1", "1.0.0.1", "2606:4700:4700::1111", "2606:4700:4700::1001")
