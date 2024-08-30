@@ -95,15 +95,14 @@ object AppConfig {
         "https://raw.githubusercontent.com/2dust/androidpackagenamelist/master/proxy.txt"
     const val v2rayCustomRoutingListUrl =
         "https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/"
-    const val v2rayNGUrl = "https://github.com/oxidvip/NikaNG/"
-    const val v2rayNGIssues = "https://github.com/oxidvip/NikaNG/issues"
-    const val v2rayNGWikiMode = "https://github.com/oxidvip/NikaNG/wiki"
-    const val v2rayNGPrivacyPolicy = "https://github.com/oxidvip/NikaNG/blob/master/CR.md"
+    const val v2rayNGUrl = "https://github.com/oxidvip/OxidNG/"
+    const val v2rayNGIssues = "https://github.com/oxidvip/OxidNG/issues"
+    const val v2rayNGWikiMode = "https://github.com/oxidvip/OxidNG/wiki"
+    const val v2rayNGPrivacyPolicy = "https://github.com/oxidvip/OxidNG/blob/master/CR.md"
     const val PromotionUrl = "aHR0cHM6Ly93d3cubWFoc2FzZXJ2ZXIuY29t"
     const val GeoUrl = "https://github.com/Chocolate4U/Iran-v2ray-rules/releases/latest/download/"
     const val TgChannelUrl = "https://t.me/oxidvip"
     const val DelayTestUrl = "https://api.telegram.org/robots.txt"
-    const val DelayTestUrl2 = "https://www.google.com/generate_204"
 
     /** DNS server addresses. */
     const val DNS_PROXY = "1.1.1.1"
