@@ -335,7 +335,7 @@ class V2RayVpnService : VpnService(), ServiceControl {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun attachBaseContext(newBase: Context?) {
         val context = newBase?.let {
-            MyContextWrapper.wrap(newBase
+            MyContextWrapper.wrap(newBase, Utils.getLocale())
         }
         super.attachBaseContext(context)
     }
