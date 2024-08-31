@@ -309,8 +309,6 @@
     </string-array>
 
     <string-array name="ui_mode_night">
-        <item>Follow system</item>
-        <item>Light</item>
         <item>Dark</item>
     </string-array>
 
