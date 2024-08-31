@@ -30,7 +30,7 @@ jobs:
     - name: download latest Mahsa-core aar
       uses: robinraju/release-downloader@v1
       with:
-        repository: 'oxidvip/AndroidLibXrayLite'
+        repository: 'GFW-knocker/AndroidLibXrayLite'
         latest: true
         fileName: 'libv2ray.aar'
         out-file-path: '${{ github.workspace }}/V2rayNG/app/libs/'
