@@ -342,7 +342,6 @@ object V2rayConfigUtil {
     private fun customLocalDns(v2rayConfig: V2rayConfig): Boolean {
         try {
             if (settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == true) {
-                val geositeCn = arrayListOf("geosite:ir")
                 val proxyDomain = userRule2Domain(
                     settingsStorage?.decodeString(AppConfig.PREF_V2RAY_ROUTING_AGENT)
                         .orEmpty()
@@ -355,8 +354,7 @@ object V2rayConfigUtil {
                 v2rayConfig.dns.servers?.add(
                     0,
                     V2rayConfig.DnsBean.ServersBean(
-                        address = "fakedns",
-                        domains = geositeCn.plus(proxyDomain).plus(directDomain)
+                        address = "fakedns"
                     )
                 )
             }
