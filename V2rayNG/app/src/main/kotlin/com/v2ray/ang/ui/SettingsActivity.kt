@@ -255,8 +255,6 @@ class SettingsActivity : BaseActivity() {
                 AppConfig.PREF_ROUTING_MODE,
                 AppConfig.PREF_MUX_XUDP_QUIC,
                 AppConfig.PREF_FRAGMENT_PACKETS,
-                AppConfig.PREF_LANGUAGE,
-                AppConfig.PREF_UI_MODE_NIGHT,
                 AppConfig.PREF_LOGLEVEL,
                 AppConfig.PREF_MODE
             ).forEach { key ->
