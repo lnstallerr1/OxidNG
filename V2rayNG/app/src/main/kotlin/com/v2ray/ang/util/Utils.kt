@@ -411,7 +411,6 @@ object Utils {
         return when (lang) {
             "auto" -> getSysLocale()
             "en" -> Locale.ENGLISH
-            "fa" -> Locale("fa")
             else -> getSysLocale()
         }
     }
