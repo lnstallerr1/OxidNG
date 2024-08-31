@@ -453,9 +453,7 @@ object V2rayConfigUtil {
                 servers.add(
                     V2rayConfig.DnsBean.ServersBean(
                         domesticDns.first(),
-                        53,
-                        directDomain,
-                        if (isCnRoutingMode) geoipCn else null
+                        53
                     )
                 )
             }
