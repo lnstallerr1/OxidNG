@@ -87,7 +87,7 @@
             android:title="@string/title_pref_start_scan_immediate" />
 
         <ListPreference
-            android:defaultValue="auto"
+            android:defaultValue="en"
             android:entries="@array/language_select"
             android:entryValues="@array/language_select_value"
             android:key="pref_language"
