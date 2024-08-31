@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="color_fab_active">#790FFA</color>
-    <color name="color_fab_inactive">#646464</color>
-    <color name="color_secondary">#BDBDBD</color>
+    <color name="color_fab_inactive">#00FFFF</color>
+    <color name="color_secondary">#000000</color>
 
     <color name="colorPrimary">#040720</color>
     <color name="colorAccent">#FFFFFF</color>
