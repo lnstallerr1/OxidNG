@@ -342,6 +342,7 @@ object V2rayConfigUtil {
     private fun customLocalDns(v2rayConfig: V2rayConfig): Boolean {
         try {
             if (settingsStorage?.decodeBool(AppConfig.PREF_FAKE_DNS_ENABLED) == true) {
+                val geositeCn = arrayListOf("geosite:ir")
                 val proxyDomain = userRule2Domain(
                     settingsStorage?.decodeString(AppConfig.PREF_V2RAY_ROUTING_AGENT)
                         .orEmpty()
@@ -354,7 +355,8 @@ object V2rayConfigUtil {
                 v2rayConfig.dns.servers?.add(
                     0,
                     V2rayConfig.DnsBean.ServersBean(
-                        address = "fakedns"
+                        address = "fakedns",
+                        domains = geositeCn.plus(proxyDomain).plus(directDomain)
                     )
                 )
             }
@@ -444,7 +446,7 @@ object V2rayConfigUtil {
                     .orEmpty()
             )
             val routingMode = settingsStorage?.decodeString(AppConfig.PREF_ROUTING_MODE)
-                ?: ERoutingMode.BYPASS_LAN_MAINLAND.value
+                ?: ERoutingMode.BYPASS_LAN.value
             val isCnRoutingMode =
                 (routingMode == ERoutingMode.BYPASS_MAINLAND.value || routingMode == ERoutingMode.BYPASS_LAN_MAINLAND.value)
             val geoipCn = arrayListOf("geoip:ir")
@@ -453,7 +455,9 @@ object V2rayConfigUtil {
                 servers.add(
                     V2rayConfig.DnsBean.ServersBean(
                         domesticDns.first(),
-                        53
+                        53,
+                        directDomain,
+                        if (isCnRoutingMode) geoipCn else null
                     )
                 )
             }
