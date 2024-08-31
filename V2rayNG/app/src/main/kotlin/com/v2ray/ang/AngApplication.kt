@@ -35,6 +35,7 @@ class AngApplication : MultiDexApplication() {
         //Logger.init().logLevel(if (BuildConfig.DEBUG) LogLevel.FULL else LogLevel.NONE)
         MMKV.initialize(this)
 
+        Utils.setNightMode(application)
         // Initialize WorkManager with the custom configuration
         WorkManager.initialize(this, workManagerConfiguration)
     }
