@@ -382,6 +382,18 @@ object Utils {
         }
     }
 
+        fun getDarkModeStatus(context: Context): Boolean {
+        return context.resources.configuration.uiMode and UI_MODE_NIGHT_MASK != UI_MODE_NIGHT_NO
+    }
+
+
+    fun setNightMode(context: Context) {
+        when (settingsStorage?.decodeString(AppConfig.PREF_UI_MODE_NIGHT, "0")) {
+            "0" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
+
+    
     fun getIpv6Address(address: String?): String {
         if (address == null) {
             return ""
@@ -394,6 +406,15 @@ object Utils {
     }
 
 
+    fun getLocale(): Locale {
+        val lang = settingsStorage?.decodeString(AppConfig.PREF_LANGUAGE) ?: "en"
+        return when (lang) {
+            "en" -> Locale.ENGLISH
+            else -> getSysLocale()
+        }
+    }
+
+    
     private fun getSysLocale(): Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
         LocaleList.getDefault()[0]
     } else {
