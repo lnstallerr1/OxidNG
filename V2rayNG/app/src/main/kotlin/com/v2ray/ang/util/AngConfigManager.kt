@@ -90,10 +90,7 @@ object AngConfigManager {
 //            settingsStorage?.encode(key, sharedPreferences.getString(key, null))
 //        }
 //        listOf(
-//            AppConfig.PREF_SPEED_ENABLED,
 //            AppConfig.PREF_PROXY_SHARING,
-//            AppConfig.PREF_LOCAL_DNS_ENABLED,
-//            AppConfig.PREF_ALLOW_INSECURE,
 //            AppConfig.PREF_PREFER_IPV6,
 //            AppConfig.PREF_PER_APP_PROXY,
 //            AppConfig.PREF_BYPASS_APPS,
@@ -102,6 +99,9 @@ object AngConfigManager {
 //        }
 //        settingsStorage?.encode(
 //            AppConfig.PREF_SNIFFING_ENABLED,
+//            AppConfig.PREF_ALLOW_INSECURE,
+//            AppConfig.PREF_LOCAL_DNS_ENABLED,
+//            AppConfig.PREF_SPEED_ENABLED,
 //            sharedPreferences.getBoolean(AppConfig.PREF_SNIFFING_ENABLED, true)
 //        )
 //        settingsStorage?.encode(
