@@ -146,7 +146,7 @@ object Utils {
     }
 
     /**
-     * get remote dns servers from preference
+     * get domestic dns servers from preference
      */
     fun getDomesticDnsServers(): List<String> {
         val domesticDns = settingsStorage?.decodeString(AppConfig.PREF_DOMESTIC_DNS) ?: AppConfig.DNS_DIRECT
