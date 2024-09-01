@@ -409,7 +409,7 @@ data class V2rayConfig(
             var enabled: Boolean,
             var concurrency: Int = 8,
             var xudpConcurrency: Int = 16,
-            var xudpProxyUDP443: Int = 16,
+            var xudpProxyUDP443: String = "",
         )
 
         fun getServerAddress(): String? {
