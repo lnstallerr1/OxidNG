@@ -12,7 +12,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 585
-        versionName = "1.9.2"
+        versionName = "1.9.1"
         multiDexEnabled = true
         splits {
             abi {
