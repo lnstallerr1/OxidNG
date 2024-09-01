@@ -2,8 +2,8 @@
 <resources>
     <color name="color_fab_active">#790FFA</color>
     <color name="color_fab_inactive">#2900AA</color>
-    <color name="color_secondary">#00004D</color>
+    <color name="color_secondary">#FFFFFF</color>
 
     <color name="colorPrimary">#040720</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#00004D</color>
 </resources>
