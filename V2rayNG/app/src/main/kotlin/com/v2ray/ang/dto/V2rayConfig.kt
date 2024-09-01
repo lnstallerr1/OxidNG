@@ -408,8 +408,8 @@ data class V2rayConfig(
         data class MuxBean(
             var enabled: Boolean,
             var concurrency: Int = 8,
-            var xudpConcurrency: Int = 8,
-            var xudpProxyUDP443: String = "",
+            var xudpConcurrency: Int = 16,
+            var xudpProxyUDP443: Int = 16,
         )
 
         fun getServerAddress(): String? {
