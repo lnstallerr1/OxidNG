@@ -56,8 +56,8 @@ jobs:
         chmod 755 gradlew
         ./gradlew assembleDebug
 
-    - name: Upload APK
+    - name: Upload APKs Individually
       uses: actions/upload-artifact@v4
       with:
-        name: apk
-        path: ${{ github.workspace }}/V2rayNG/app/build/outputs/apk/debug/
+        name: apk-artifacts
+        path: ${{ github.workspace }}/V2rayNG/app/build/outputs/apk/release/*.apk
